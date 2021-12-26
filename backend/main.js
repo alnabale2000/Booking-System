@@ -4,6 +4,10 @@ const cors = require("cors");
 const app = express();
 app.use(express.json());
 
+const usersRouter = require("./routers/routes/users");
+
+app.use(usersRouter);
+
 const corsOptions = { origin: "*", credentials: true };
 app.use(cors(corsOptions));
 
