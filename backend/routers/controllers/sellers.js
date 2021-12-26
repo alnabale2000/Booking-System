@@ -9,6 +9,7 @@ const createNewSellerAccount = async (req, res) => {
         const query = `INSERT INTO 
         sellers(username,filed,summary,email,pass)
         VALUES (?,?,?,?,?);`;
+        45;
         const data = [username, filed, summary, email.toLowerCase(), hashedPassword];
 
         connection.query(query, data, (err, result) => {
@@ -21,6 +22,15 @@ const createNewSellerAccount = async (req, res) => {
     }
 };
 
+const getAllSellers = async (req, res) => {
+    const query = "SELECT id,username,filed,summary FROM sellers";
+    connection.query(query, (err, result) => {
+        if (err) res.status(404).json(err);
+        res.status(200).json(result);
+    });
+};
+
 module.exports = {
     createNewSellerAccount,
+    getAllSellers,
 };

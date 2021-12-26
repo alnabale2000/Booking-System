@@ -4,7 +4,7 @@ CREATE DATABASE bookingSystem;
 USE bookingSystem;
 
 CREATE TABLE sellers (
-    Id INT AUTO_INCREMENT NOT NULL,
+    id INT AUTO_INCREMENT NOT NULL,
     email VARCHAR(255),
     pass VARCHAR(255),
     username VARCHAR(255),
@@ -14,7 +14,7 @@ CREATE TABLE sellers (
 );
 
 CREATE TABLE users (
-    Id INT AUTO_INCREMENT NOT NULL,
+    id INT AUTO_INCREMENT NOT NULL,
     email VARCHAR(255),
     pass VARCHAR(255),
     username VARCHAR(255),
@@ -22,7 +22,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE appointment(
-    Id INT AUTO_INCREMENT NOT NULL,
+    id INT AUTO_INCREMENT NOT NULL,
     phonenumber INT ,
     app_date VARCHAR(255),
     hour VARCHAR(255),
