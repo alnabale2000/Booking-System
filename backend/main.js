@@ -6,9 +6,11 @@ app.use(express.json());
 
 const usersRouter = require("./routers/routes/users");
 const SellersRouter = require("./routers/routes/sellers");
+const authRouter = require("./routers/routes/auth");
 
 app.use(usersRouter);
 app.use(SellersRouter);
+app.use(authRouter);
 
 const corsOptions = { origin: "*", credentials: true };
 app.use(cors(corsOptions));
