@@ -27,7 +27,9 @@ CREATE TABLE appointment(
     app_date VARCHAR(255),
     hour VARCHAR(255),
     seller_name VARCHAR(255),
+    sellerId INT,
     username VARCHAR(255),
+    userId INT,
     app_status VARCHAR(255),
     PRIMARY KEY (Id)
 

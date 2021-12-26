@@ -1,9 +1,9 @@
 const express = require("express");
 
-const {} = require("./../controllers/appointment");
+const { confirmAppointment } = require("./../controllers/appointment");
 
 const appointmentRouter = express.Router();
 
-// SellersRouter.post("/sellers", createNewSellerAccount);
+appointmentRouter.post("/add_appointment", confirmAppointment);
 
 module.exports = appointmentRouter;
