@@ -16,7 +16,7 @@ const confirmAppointment = (req, res) => {
 
 const getAppointmentsByUserId = async (req, res) => {
     const id = req.params.id;
-    const query = `SELECT userId,seller_name,app_date,app_status FROM appointment WHERE userId=?;`;
+    const query = `SELECT id,seller_name,app_date,hour,app_status FROM appointment WHERE userId=?;`;
     const data = [id];
     connection.query(query, data, (err, result) => {
         if (err) res.status(404).json(err);
@@ -24,7 +24,17 @@ const getAppointmentsByUserId = async (req, res) => {
     });
 };
 
+const getAppointmentsBySellerId = async (req, res) => {
+    const id = req.params.id;
+    const query = `SELECT id,username,app_date,hour,phonenumber FROM appointment WHERE sellerId=?;`;
+    const data = [id];
+    connection.query(query, data, (err, result) => {
+        if (err) res.status(404).json(err);
+        res.status(200).json(result);
+    });
+};
 module.exports = {
     confirmAppointment,
     getAppointmentsByUserId,
+    getAppointmentsBySellerId,
 };
