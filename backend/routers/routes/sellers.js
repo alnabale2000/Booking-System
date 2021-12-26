@@ -5,6 +5,6 @@ const { createNewSellerAccount, getAllSellers } = require("./../controllers/sell
 const SellersRouter = express.Router();
 
 SellersRouter.post("/sellers", createNewSellerAccount);
-SellersRouter.get("/sellers", getAllSellers);
+SellersRouter.get("/sellers/:name", getAllSellers);
 
 module.exports = SellersRouter;

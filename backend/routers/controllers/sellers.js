@@ -23,7 +23,11 @@ const createNewSellerAccount = async (req, res) => {
 };
 
 const getAllSellers = async (req, res) => {
-    const query = "SELECT id,username,filed,summary FROM sellers";
+    let query;
+    const sellerName = req.params.name;
+    sellerName === "none"
+        ? (query = "SELECT id,username,filed,summary FROM sellers")
+        : (query = `SELECT id,username,filed,summary FROM sellers WHERE username LIKE N'%${sellerName}%'`);
     connection.query(query, (err, result) => {
         if (err) res.status(404).json(err);
         res.status(200).json(result);
