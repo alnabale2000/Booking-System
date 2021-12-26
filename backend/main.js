@@ -1,7 +1,6 @@
 const express = require("express");
-const cors = require("cors");
-
 const app = express();
+const cors = require("cors");
 app.use(express.json());
 
 const usersRouter = require("./routers/routes/users");
@@ -14,7 +13,11 @@ app.use(sellersRouter);
 app.use(authRouter);
 app.use(appointmentRouter);
 
-const corsOptions = { origin: "*", credentials: true };
+const corsOptions = {
+    origin: "*",
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
+};
 app.use(cors(corsOptions));
 
 const PORT = 5000;

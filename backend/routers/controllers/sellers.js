@@ -23,6 +23,9 @@ const createNewSellerAccount = async (req, res) => {
 };
 
 const getAllSellers = async (req, res) => {
+    // To Resolve cors blocking problem
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     let query;
     const sellerName = req.params.name;
     sellerName === "none"

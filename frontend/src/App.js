@@ -1,12 +1,14 @@
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/navigation";
-
+import Sellers from "./components/sellers";
 function App() {
     return (
         <div className="App">
             <Navigation />
-            {/* <Switch><Route exact path="/" component={Sellers}/></Switch> */}
+            <Routes>
+                <Route exact path="/" element={<Sellers />} />
+            </Routes>
         </div>
     );
 }

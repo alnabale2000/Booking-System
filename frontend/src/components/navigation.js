@@ -45,7 +45,7 @@ const Navigation = () => {
                                 goTo("/");
                             }}
                         >
-                            Booking System
+                            Sellers List
                         </h1>
                     </div>
                     <div className="links">
@@ -85,7 +85,7 @@ const Navigation = () => {
                                 goTo("/");
                             }}
                         >
-                            Booking System
+                            Sellers List
                         </h1>
                     </div>
                     <div className="links">
