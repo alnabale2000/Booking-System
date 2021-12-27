@@ -92,7 +92,7 @@ const Navigation = () => {
                         <h1
                             className="link"
                             onClick={() => {
-                                goTo("/restaurant_login");
+                                goTo("/seller_login");
                             }}
                         >
                             Be A Seller
