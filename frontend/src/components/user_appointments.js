@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { setAppointments } from "../reducers/appointments";
+import { setAppointments, deleteAppointment } from "../reducers/appointments";
+
 const UserAppointments = () => {
     const id = useParams();
     const dispatch = useDispatch();
@@ -22,11 +23,10 @@ const UserAppointments = () => {
         });
     }, []);
 
-    const deleteAppointment = (id) => {
-        console.log("id", id);
-        console.log("t1");
+    const removeAppointment = (id) => {
         axios.delete(` http://localhost:5000/delete_appointment/${id}`).then((res) => {
-            console.log("res.data", res.data);
+            console.log("front", typeof id);
+            dispatch(deleteAppointment(id));
         });
     };
 
@@ -45,7 +45,7 @@ const UserAppointments = () => {
                             <p>{appointment.app_status}</p>
                             <button
                                 onClick={() => {
-                                    deleteAppointment(appointment.id);
+                                    removeAppointment(appointment.id);
                                 }}
                             >
                                 delete

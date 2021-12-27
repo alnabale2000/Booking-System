@@ -35,7 +35,7 @@ const getAppointmentsBySellerId = async (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
 
     const id = req.params.id;
-    const query = `SELECT id,username,app_date,hour,phonenumber FROM appointment WHERE sellerId=?;`;
+    const query = `SELECT id,username,app_date,hour,phonenumber,app_status FROM appointment WHERE sellerId=?;`;
     const data = [id];
     connection.query(query, data, (err, result) => {
         if (err) res.status(404).json(err);

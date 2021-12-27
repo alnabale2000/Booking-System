@@ -15,19 +15,17 @@ const SellerAppointments = () => {
     });
     const appointments = state.appointments;
 
-    useEffect(() => {
-        console.log("t");
+    const getAppointments = () => {
         axios.get(`http://localhost:5000/seller_appointments/${id.id}`).then((res) => {
             console.log("res.data", res.data);
             dispatch(setAppointments(res.data));
         });
+    };
+
+    useEffect(() => {
+        getAppointments();
     }, []);
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:5000/seller_appointments/${id.id}`).then((res) => {
-    //         console.log("res.data", res.data);
-    //     });
-    // }, []);
     const sendAppointmentResponse = (status, appointmentId) => {
         axios
             .put(`http://localhost:5000/update_appointment`, {
@@ -35,38 +33,43 @@ const SellerAppointments = () => {
                 status,
             })
             .then((res) => {
-                console.log("res.data", res.data);
+                //to re-get the appointments
+                getAppointments();
             });
     };
     return (
         <main>
             {console.log("appointments", appointments)}
-            <section className="sellers">
+            <section className="appointments">
                 {appointments &&
                     appointments.map((appointment) => (
-                        <div className="seller" key={appointment.id}>
+                        <div className="appointment" key={appointment.id}>
                             <h2> ({appointment.username}) Want To Book An Appointment.</h2>
                             <p>
                                 {" "}
                                 Appointment Date : {appointment.app_date} At {appointment.hour}
                             </p>
                             <p>Phone Number : {appointment.phonenumber}</p>
-                            <section className="buttons">
-                                <button
-                                    onClick={() => {
-                                        sendAppointmentResponse("Accepted", appointment.id);
-                                    }}
-                                >
-                                    Accept
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        sendAppointmentResponse("Rejectd", appointment.id);
-                                    }}
-                                >
-                                    Reject
-                                </button>
-                            </section>
+                            {appointment.app_status === "Waiting For Response..." ? (
+                                <section className="buttons">
+                                    <button
+                                        onClick={() => {
+                                            sendAppointmentResponse("Accepted", appointment.id);
+                                        }}
+                                    >
+                                        Accept
+                                    </button>
+                                    <button
+                                        onClick={() => {
+                                            sendAppointmentResponse("Rejectd", appointment.id);
+                                        }}
+                                    >
+                                        Reject
+                                    </button>
+                                </section>
+                            ) : (
+                                <p>You ({appointment.app_status}) This Appointment</p>
+                            )}
                         </div>
                     ))}
             </section>

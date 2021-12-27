@@ -16,6 +16,8 @@ const Sellers = () => {
     const [appStatus, setAppStatus] = useState("Waiting For Response...");
     const [sellerName, setSellerName] = useState("");
     const [sellerId, setSellerId] = useState(0);
+    const [toggleConfirmButton, setToggleConfirmButton] = useState(true);
+    const [message, setMessage] = useState("");
 
     const dispatch = useDispatch();
 
@@ -38,24 +40,34 @@ const Sellers = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios
-            .post(`http://localhost:5000/add_appointment/`, {
-                phoneNumber,
-                appDate,
-                hour,
-                sellerName,
-                sellerId,
-                username,
-                userId,
-                appStatus,
-            })
-            .then((res) => {
-                console.log("res.data", res.data);
-                // dispatch(addAddress(res.data));
-            });
+        try {
+            axios
+                .post(`http://localhost:5000/add_appointment/`, {
+                    phoneNumber,
+                    appDate,
+                    hour,
+                    sellerName,
+                    sellerId,
+                    username,
+                    userId,
+                    appStatus,
+                })
+                .then((res) => {
+                    console.log("res.data", res.data);
+                    // dispatch(addAddress(res.data));
+                });
+            setToggleConfirmButton(false);
+            setMessage("Appointment Confirmed Succssfully");
+            setTimeout(() => {
+                setVisibility(!visibility);
+            }, 2500);
+        } catch (error) {
+            setMessage("Can not Confirm");
+        }
     };
 
     const openPopUb = (sellerId, sellerName) => {
+        if (toggleConfirmButton === false) setToggleConfirmButton(true);
         setSellerName(sellerName);
         setSellerId(sellerId);
         setVisibility(!visibility);
@@ -133,13 +145,17 @@ const Sellers = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <button
-                                        onClick={handleSubmit}
-                                        type="submit"
-                                        className="btn btn-secondary"
-                                    >
-                                        Confirm Appointment
-                                    </button>
+                                    {toggleConfirmButton ? (
+                                        <button
+                                            onClick={handleSubmit}
+                                            type="submit"
+                                            className="btn btn-secondary"
+                                        >
+                                            Confirm Appointment
+                                        </button>
+                                    ) : (
+                                        <p>{message}</p>
+                                    )}
                                 </form>
                             </CustomPopup>
                         </div>
