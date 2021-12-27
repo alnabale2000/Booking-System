@@ -14,28 +14,13 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
 
-    const state = useSelector((state) => {
-        return {
-            token: state.loginReducer.token,
-            user: state.loginReducer.user,
-        };
-    });
-
-    useEffect(() => {
-        console.log("t1");
-    }, []);
-
-    const validateForm = () => {
-        return email.length > 0 && password.length > 0;
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
             .post("http://localhost:5000/login", { email, password })
             .then((result) => {
                 const user = jwt_decode(result.data["token"]);
-                console.log("user.username", user.username);
+                console.log("user", user);
 
                 if (result) {
                     dispatch(setToken({ token: result.data["token"], user }));
@@ -77,13 +62,7 @@ const Login = () => {
                         />
                         <label>Password</label>
                     </div>
-                    <a onClick={handleSubmit}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Submit
-                    </a>
+                    <button onSubmit={handleSubmit}>Submit</button>
                     <p className="footer-login-text">{message} </p>
                     <p className="footer-login-text">
                         don't have an account?

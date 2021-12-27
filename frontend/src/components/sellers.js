@@ -6,7 +6,7 @@ import CustomPopup from "./popup";
 import { setSellers } from "../reducers/sellers";
 
 const Sellers = () => {
-    const userId = localStorage.getItem("userId");
+    const userId = localStorage.getItem("id");
     const username = localStorage.getItem("username");
     const [searchText, setSearchText] = useState("none");
     const [visibility, setVisibility] = useState(false);

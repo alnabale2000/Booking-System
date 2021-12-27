@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const SignUp = ({ id }) => {
+const SignUp = () => {
     const navigate = useNavigate();
 
     const [username, setUsername] = useState("");
@@ -12,11 +12,6 @@ const SignUp = ({ id }) => {
 
     async function addNewUser() {
         try {
-            // const newUser = {
-            //     username,
-            //     email,
-            //     password,
-            // };
             //client validation
             if (!username || !email || !password) {
                 setMessage("Please fill all the info");
@@ -35,7 +30,7 @@ const SignUp = ({ id }) => {
                         if (response) {
                             setMessage("The user has been created successfully ");
                             setTimeout(function () {
-                                navigate("/login");
+                                navigate("/seller_login");
                             }, 2000);
                         } else {
                             setMessage("Error happened while register, please try again");
