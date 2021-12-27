@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
 app.use(express.json());
 
 const usersRouter = require("./routers/routes/users");
@@ -13,12 +12,24 @@ app.use(sellersRouter);
 app.use(authRouter);
 app.use(appointmentRouter);
 
-const corsOptions = {
-    origin: "*",
-    credentials: true, //access-control-allow-credentials:true
-    optionSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
+const cors = require("cors");
+app.use(cors());
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    next();
+});
+
+// app.use(function (request, response, next) {
+//     response.header("Access-Control-Allow-Origin", "*");
+//     response.header(
+//         "Access-Control-Allow-Headers",
+//         "Origin, X-Requested-With, Content-Type, Accept"
+//     );
+//     next();
+// });
 
 const PORT = 5000;
 app.listen(PORT, () => {

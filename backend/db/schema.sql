@@ -15,9 +15,9 @@ CREATE TABLE sellers (
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT NOT NULL,
+    username VARCHAR(255),
     email VARCHAR(255),
     pass VARCHAR(255),
-    username VARCHAR(255),
     PRIMARY KEY (Id)
 );
 

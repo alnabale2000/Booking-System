@@ -4,6 +4,9 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const login = async (req, res) => {
+    // To Resolve cors blocking problem
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+
     const { email, password } = req.body;
     const query = `SELECT * FROM users WHERE email =?;`;
     const data = [email];
@@ -40,6 +43,9 @@ const login = async (req, res) => {
 };
 
 const SellerLogin = async (req, res) => {
+    // To Resolve cors blocking problem
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+
     const { email, password } = req.body;
     const query = `SELECT id,email,pass FROM sellers WHERE email =?;`;
     const data = [email];

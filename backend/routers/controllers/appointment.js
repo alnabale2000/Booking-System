@@ -2,6 +2,9 @@ const connection = require("./../../db/db");
 const { query } = require("../../db/db");
 
 const confirmAppointment = (req, res) => {
+    // To Resolve cors blocking problem
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+
     const { phoneNumber, appDate, hour, sellerName, sellerId, username, userId, appStatus } =
         req.body;
     const query = `INSERT INTO appointment(phonenumber,app_date,hour,seller_name,sellerId,username,userId,
@@ -15,6 +18,9 @@ const confirmAppointment = (req, res) => {
 };
 
 const getAppointmentsByUserId = async (req, res) => {
+    // // To Resolve cors blocking problem
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+
     const id = req.params.id;
     const query = `SELECT id,seller_name,app_date,hour,app_status FROM appointment WHERE userId=?;`;
     const data = [id];
@@ -25,6 +31,9 @@ const getAppointmentsByUserId = async (req, res) => {
 };
 
 const getAppointmentsBySellerId = async (req, res) => {
+    // To Resolve cors blocking problem
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     const id = req.params.id;
     const query = `SELECT id,username,app_date,hour,phonenumber FROM appointment WHERE sellerId=?;`;
     const data = [id];
@@ -35,7 +44,11 @@ const getAppointmentsBySellerId = async (req, res) => {
 };
 
 const deleteAppointment = async (req, res) => {
-    const id = req.body.appointmentId;
+    // To Resolve cors blocking problem
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+    console.log("bt1");
+    const id = req.params.id;
+    console.log("id", id);
     const query = `DELETE FROM appointment WHERE id=?;`;
     const data = [id];
     const deleteCheck = await connection.promise().query(query, data);

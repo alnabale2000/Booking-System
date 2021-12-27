@@ -3,6 +3,9 @@ const connection = require("../../db/db");
 const bcrypt = require("bcrypt");
 
 const createNewSellerAccount = async (req, res) => {
+    // To Resolve cors blocking problem
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+
     const { email, password, username, filed, summary } = req.body;
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -23,8 +26,9 @@ const createNewSellerAccount = async (req, res) => {
 };
 
 const getAllSellers = async (req, res) => {
-    // To Resolve cors blocking problem
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    // // To Resolve cors blocking problem
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+    console.log("here");
 
     let query;
     const sellerName = req.params.name;
