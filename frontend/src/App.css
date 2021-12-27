@@ -1,5 +1,40 @@
-@import url("https://fonts.googleapis.com/css2?family=Licorice&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+@import "styles/sellers_page/search-bar.css";
 .App {
     text-align: center;
+    font-family: "Nanum Gothic", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.flex-box {
+    display: flex;
+}
+
+.baseline {
+    align-items: baseline;
+}
+
+.space-b {
+    justify-content: space-between;
+}
+
+.navbar {
+    background-color: #56b2e5;
+    box-shadow: 1px 1px 3px 1px rgba(128, 128, 128, 0.804);
+}
+
+.title {
+    padding-left: 20px;
+}
+
+.links {
+    padding-right: 20px;
+}
+
+.link {
+    padding: 0 7.5px 0 7.5px;
 }

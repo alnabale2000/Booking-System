@@ -40,9 +40,9 @@ const Navigation = () => {
         navigate(endPoint);
     };
     return (
-        <nav className="navbar navbar-expand-md bg-dark navbar-dark">
+        <nav className="navbar">
             {state.isLoggedIn ? (
-                <>
+                <div className="flex-box space-b">
                     <div>
                         <h1
                             className="title"
@@ -53,7 +53,7 @@ const Navigation = () => {
                             Sellers List
                         </h1>
                     </div>
-                    <div className="links">
+                    <div className="links flex-box">
                         {type === "user" ? (
                             <h1
                                 className="link"
@@ -80,9 +80,9 @@ const Navigation = () => {
                             log out
                         </h1>
                     </div>
-                </>
+                </div>
             ) : (
-                <>
+                <div className="flex-box space-b">
                     <div>
                         <h1
                             className="title"
@@ -93,7 +93,7 @@ const Navigation = () => {
                             Sellers List
                         </h1>
                     </div>
-                    <div className="links">
+                    <div className="links flex-box">
                         <h1
                             className="link"
                             onClick={() => {
@@ -111,7 +111,7 @@ const Navigation = () => {
                             Sign Up
                         </h1>
                     </div>
-                </>
+                </div>
             )}
         </nav>
     );
