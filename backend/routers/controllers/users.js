@@ -2,9 +2,6 @@ const connection = require("./../../db/db");
 const bcrypt = require("bcrypt");
 
 const createNewAccount = async (req, res, next) => {
-    // To Resolve cors blocking problem
-    console.log("reached");
-
     const { username, email, password } = req.body;
     try {
         const hashedPassword = await bcrypt.hash(password, 10);

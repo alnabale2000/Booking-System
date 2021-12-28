@@ -8,6 +8,7 @@ import SellerAppointments from "./components/seller_appointments";
 import Login from "./components/auth/user_auth/login";
 import SellerSignUp from "./components/auth/seller_auth/signup";
 import SellerLogin from "./components/auth/seller_auth/login";
+import Footer from "./components/footer";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 <Route exact path="/clients_appointments/:id" element={<SellerAppointments />} />
                 <Route exact path="/" element={<Sellers />} />
             </Routes>
+            <Footer />
         </div>
     );
 }

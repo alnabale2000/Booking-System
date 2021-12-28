@@ -41,9 +41,9 @@ const Navigation = () => {
         navigate(endPoint);
     };
     return (
-        <nav className="navbar">
+        <nav className="navbar ">
             {state.isLoggedIn ? (
-                <div className="flex-box space-b">
+                <div className="flex-box space-b baseline">
                     <div>
                         <h1
                             className="title"
@@ -83,7 +83,7 @@ const Navigation = () => {
                     </div>
                 </div>
             ) : (
-                <div className="flex-box space-b">
+                <div className="flex-box space-b baseline">
                     <div>
                         <h1
                             className="title"
