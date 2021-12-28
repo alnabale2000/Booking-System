@@ -9,6 +9,10 @@ footer {
     flex-direction: column;
     color: white;
     text-align: center;
+    margin-top: 160px;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
 }
 
 .so-icons {

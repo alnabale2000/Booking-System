@@ -23,7 +23,7 @@ function App() {
                 <Route exact path="/clients_appointments/:id" element={<SellerAppointments />} />
                 <Route exact path="/" element={<Sellers />} />
             </Routes>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }
