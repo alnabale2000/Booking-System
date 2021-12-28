@@ -40,12 +40,17 @@ const SellerSignUp = () => {
                             setMessage("Error happened while register, please try again");
                         }
                     });
-                console.log("t10");
             }
         } catch (error) {
             setMessage("Error 5000 happened while register, please try again");
+            setTimeout(() => {
+                setMessage("");
+            }, 3000);
             throw error;
         }
+        setTimeout(() => {
+            setMessage("");
+        }, 3000);
     }
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -55,43 +60,70 @@ const SellerSignUp = () => {
     return (
         <main className="login-body">
             <div className="login-box">
-                <h2>Sign Up</h2>
+                <h2 className="login-top-text">CREATE SELLER ACCOUNT</h2>
                 <form onSubmit={handleSubmit}>
-                    <div className="user-box">
-                        <input type="text" onChange={(e) => setUsername(e.target.value)} required />
-                        <label>Username</label>
-                    </div>
-                    <div className="user-box">
-                        <input type="email" onChange={(e) => setEmail(e.target.value)} required />
-                        <label>Email</label>
-                    </div>
-                    <div className="user-box">
+                    <div className="login-input-box margin-edit">
+                        <label className="login-label">Username</label>
+                        <br />
                         <input
+                            className="login-input"
+                            type="text"
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="login-input-box margin-edit">
+                        <label className="login-label">Email</label>
+                        <br />
+                        <input
+                            className="login-input"
+                            type="email"
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="login-input-box margin-edit">
+                        <label className="login-label">Password</label>
+                        <br />
+                        <input
+                            className="login-input"
                             type="password"
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
-                        <label>Password</label>
                     </div>
-                    <div className="user-box">
+                    <div className="login-input-box margin-edit">
+                        <label className="login-label">Filed</label>
+                        <br />
                         <input
+                            className="login-input"
                             type="text"
                             onChange={(e) => setFiled(e.target.value)}
                             required
                             placeholder="ex:IT,Computer Science"
                         />
-                        <label>Filed</label>
                     </div>
-                    <div className="user-box">
-                        <input type="text" onChange={(e) => setSummary(e.target.value)} required />
-                        <label>Summary</label>
+                    <div className="login-input-box margin-edit">
+                        <label className="login-label">Summary</label>
+                        <br />
+                        <input
+                            className="login-input"
+                            type="text"
+                            onChange={(e) => setSummary(e.target.value)}
+                            required
+                        />
                     </div>
-                    <button onClick={handleSubmit}>Submit</button>
-                    <p className="footer-login-text">{message} </p>
+                    <br />
+                    <button onClick={handleSubmit} className="login-submit-btn">
+                        SUBMIT
+                    </button>
+                    <div className="divider"></div>
+
+                    <p className={message === "" ? "" : "form-message"}>{message} </p>
                     <p className="footer-login-text">
                         Already Have An Account?
                         <span
-                            className="c-link"
+                            className="switch-link"
                             onClick={() => {
                                 navigate("/seller_login");
                             }}

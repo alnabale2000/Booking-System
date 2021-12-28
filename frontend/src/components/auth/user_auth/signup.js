@@ -28,7 +28,7 @@ const SignUp = () => {
                         if (response) {
                             setMessage("The user has been created successfully ");
                             setTimeout(function () {
-                                navigate("/seller_login");
+                                navigate("/login");
                             }, 2000);
                         } else {
                             setMessage("Error happened while register, please try again");
@@ -38,13 +38,11 @@ const SignUp = () => {
         } catch (error) {
             setMessage("Error 5000 happened while register, please try again");
             setTimeout(() => {
-                console.log("hi");
                 setMessage("");
             }, 3000);
             throw error;
         }
         setTimeout(() => {
-            console.log("hi");
             setMessage("");
         }, 3000);
     }

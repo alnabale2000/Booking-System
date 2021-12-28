@@ -83,11 +83,11 @@ const Login = () => {
                         />
                     </div>
                     <button onSubmit={handleSubmit} className="login-submit-btn">
-                        Submit
+                        SUBMIT
                     </button>
                     <div className="divider"></div>
 
-                    <p className="footer-login-text">{message} </p>
+                    <p className={message === "" ? "" : "form-message"}>{message} </p>
                     <p className="footer-login-text">
                         don't have an account?
                         <span
