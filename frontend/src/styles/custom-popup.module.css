@@ -43,8 +43,54 @@
     overflow: auto;
 }
 
-@media screen and (max-width: 700px) {
+.pop-up-content {
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+.app-info-inputs {
+    text-align: start;
+    padding-left: 10%;
+    padding-top: 20px;
+}
+
+.app-info-input {
+    margin-top: 4px;
+    width: 80%;
+    height: 32px;
+    justify-self: start;
+    border: 0.8px #56b2e5 solid;
+}
+
+.pop-ub-button {
+    width: 50%;
+    margin: 20px;
+}
+
+.pop-up-message {
+    font-size: 20px;
+    font-weight: bold;
+    color: #56b2e5;
+}
+
+@media screen and (max-width: 576px) {
+    .pop-ub-button {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 768px) {
     .popup {
         width: 70%;
+    }
+    .pop-ub-button {
+        width: 67%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .popup {
+        width: 600px;
     }
 }

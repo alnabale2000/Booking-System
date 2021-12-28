@@ -75,28 +75,36 @@ const Sellers = () => {
 
     return (
         <div>
-            <section className="search">
+            <section>
                 <input
+                    className="search"
                     type="text"
                     placeholder="Search For A Seller"
                     onChange={(e) => setSearchText(e.target.value)}
                 />
             </section>
 
-            <section className="sellers">
+            <section className="sellers ">
                 {sellers &&
                     sellers.map((seller) => (
                         <div className="seller" key={seller.id}>
-                            <h2> {seller.username}</h2>
-                            <p> {seller.filed}</p>
-                            <p>{seller.summary}</p>
-                            <button
-                                onClick={() => {
-                                    openPopUb(seller.id, seller.username);
-                                }}
-                            >
-                                Book Appointment
-                            </button>
+                            <section>
+                                <h1 className="seller-name"> {seller.username}</h1>
+                                <p className="seller-filed"> {seller.filed}</p>
+                                <p className="seller-summary">{seller.summary}</p>
+                            </section>
+                            {userId !== null ? (
+                                <button
+                                    className="confirm-button"
+                                    onClick={() => {
+                                        openPopUb(seller.id, seller.username);
+                                    }}
+                                >
+                                    Book Appointment
+                                </button>
+                            ) : (
+                                <p className="login-warning-text">Login to book a Date</p>
+                            )}
                             <CustomPopup
                                 onClose={popupCloseHandler}
                                 show={visibility}
@@ -104,58 +112,61 @@ const Sellers = () => {
                             >
                                 <form>
                                     <div className="pop-up-content">
-                                        <div className="user-info-inputs flex-box space-b">
-                                            <div>
-                                                <div>
-                                                    <label>Phone Number </label>
-                                                    <br />
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Enter Your 10 digits phone number"
-                                                        onChange={(e) =>
-                                                            setPhoneNumber(e.target.value)
-                                                        }
-                                                    />
-                                                </div>
+                                        <div className="app-info-inputs ">
+                                            <div className="app-info-div">
+                                                <label className="app-info-label">
+                                                    Phone Number{" "}
+                                                </label>
                                                 <br />
-
-                                                <div>
-                                                    <label>Appointment Date </label>
-                                                    <br />
-
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Ex:02/01/2022"
-                                                        onChange={(e) => setAppDate(e.target.value)}
-                                                    />
-                                                </div>
-                                                <br />
-
-                                                <div>
-                                                    <label>In Clock </label>
-                                                    <br />
-
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Ex:18:25"
-                                                        onChange={(e) => setHour(e.target.value)}
-                                                    />
-                                                </div>
-                                                <br />
+                                                <input
+                                                    className="app-info-input"
+                                                    type="text"
+                                                    placeholder="Enter 10 digits phone number"
+                                                    onChange={(e) => setPhoneNumber(e.target.value)}
+                                                />
                                             </div>
+                                            <br />
+
+                                            <div className="app-info-div">
+                                                <label className="app-info-label">
+                                                    Appointment Date{" "}
+                                                </label>
+                                                <br />
+
+                                                <input
+                                                    className="app-info-input"
+                                                    type="text"
+                                                    placeholder="Ex:02/01/2022"
+                                                    onChange={(e) => setAppDate(e.target.value)}
+                                                />
+                                            </div>
+                                            <br />
+
+                                            <div className="app-info-div">
+                                                <label className="app-info-label">In Clock </label>
+                                                <br />
+
+                                                <input
+                                                    className="app-info-input"
+                                                    type="text"
+                                                    placeholder="Ex:18:25"
+                                                    onChange={(e) => setHour(e.target.value)}
+                                                />
+                                            </div>
+                                            <br />
                                         </div>
+                                        {toggleConfirmButton ? (
+                                            <button
+                                                className="confirm-button pop-ub-button"
+                                                onClick={handleSubmit}
+                                                type="submit"
+                                            >
+                                                Confirm Appointment
+                                            </button>
+                                        ) : (
+                                            <p className="pop-up-message">{message}</p>
+                                        )}
                                     </div>
-                                    {toggleConfirmButton ? (
-                                        <button
-                                            onClick={handleSubmit}
-                                            type="submit"
-                                            className="btn btn-secondary"
-                                        >
-                                            Confirm Appointment
-                                        </button>
-                                    ) : (
-                                        <p>{message}</p>
-                                    )}
                                 </form>
                             </CustomPopup>
                         </div>

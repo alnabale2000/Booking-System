@@ -38,38 +38,62 @@ const Login = () => {
                     }
                 } else {
                     setMessage("Error happened while login, please try again");
+                    setTimeout(() => {
+                        setMessage("");
+                    }, 3000);
                 }
             })
             .catch((err) => {
                 setMessage("Password or Email is incorrect");
+                setTimeout(() => {
+                    setMessage("");
+                }, 3000);
+            })
+            .finally((e) => {
+                setTimeout(() => {
+                    console.log("hi");
+                    setMessage("");
+                }, 3000);
             });
     };
 
     return (
-        <main className="login-body">
+        <main className="login-body fixed">
             <div className="login-box">
-                <h2>Login</h2>
+                <h2 className="login-top-text">LOGIN</h2>
                 <form onSubmit={handleSubmit}>
-                    <div className="user-box">
-                        <input type="email" onChange={(e) => setEmail(e.target.value)} required />
-                        <label>Email</label>
-                    </div>
-                    <div className="user-box">
+                    <div className="login-input-box">
+                        <label className="login-label">Email</label>
+                        <br />
                         <input
+                            className="login-input"
+                            type="email"
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="login-input-box">
+                        <label className="login-label">Password</label>
+                        <br />
+                        <input
+                            className="login-input"
                             type="password"
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
-                        <label>Password</label>
                     </div>
-                    <button onSubmit={handleSubmit}>Submit</button>
+                    <button onSubmit={handleSubmit} className="login-submit-btn">
+                        Submit
+                    </button>
+                    <div className="divider"></div>
+
                     <p className="footer-login-text">{message} </p>
                     <p className="footer-login-text">
                         don't have an account?
                         <span
-                            className="c-link"
+                            className="switch-link"
                             onClick={() => {
-                                navigate("/register");
+                                navigate("/signup");
                             }}
                         >
                             Create Account here

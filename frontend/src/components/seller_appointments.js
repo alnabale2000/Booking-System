@@ -39,36 +39,53 @@ const SellerAppointments = () => {
     };
     return (
         <main>
-            {console.log("appointments", appointments)}
             <section className="appointments">
                 {appointments &&
                     appointments.map((appointment) => (
                         <div className="appointment" key={appointment.id}>
-                            <h2> ({appointment.username}) Want To Book An Appointment.</h2>
-                            <p>
+                            <p className="app-top-text">
                                 {" "}
+                                ({appointment.username}) Want To Book An Appointment.
+                            </p>
+                            <p className="app-date">
                                 Appointment Date : {appointment.app_date} At {appointment.hour}
                             </p>
-                            <p>Phone Number : {appointment.phonenumber}</p>
+                            <p className="phone-number">
+                                Phone Number : 0{appointment.phonenumber}
+                            </p>
                             {appointment.app_status === "Waiting For Response..." ? (
                                 <section className="buttons">
                                     <button
+                                        className="response-button accept"
                                         onClick={() => {
                                             sendAppointmentResponse("Accepted", appointment.id);
                                         }}
                                     >
-                                        Accept
+                                        ACCEPT
                                     </button>
                                     <button
+                                        className="response-button reject"
                                         onClick={() => {
                                             sendAppointmentResponse("Rejectd", appointment.id);
                                         }}
                                     >
-                                        Reject
+                                        REJECT
                                     </button>
                                 </section>
                             ) : (
-                                <p>You ({appointment.app_status}) This Appointment</p>
+                                <p className="res-message">
+                                    You{" "}
+                                    <span
+                                        className={
+                                            appointment.app_status === "Accepted"
+                                                ? "green-res"
+                                                : "red-res"
+                                        }
+                                    >
+                                        {appointment.app_status}
+                                    </span>{" "}
+                                    This Appointment
+                                </p>
                             )}
                         </div>
                     ))}

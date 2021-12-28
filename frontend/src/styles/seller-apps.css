@@ -1,0 +1,53 @@
+.phone-number {
+    font-size: 17px;
+    color: #444444;
+    font-weight: bold;
+}
+
+.buttons {
+    justify-content: center;
+    text-align: center;
+}
+
+.response-button {
+    width: 29%;
+    height: 37.5px;
+    margin: 20px;
+    border: 0;
+    transition-duration: 200ms;
+    font-style: italic;
+}
+
+.accept {
+    background-color: rgba(42, 236, 74, 0.336);
+}
+
+.reject {
+    background-color: rgba(236, 42, 42, 0.336);
+}
+
+.green-res {
+    color: green;
+}
+
+.red-res {
+    color: red;
+}
+
+.response-button:hover {
+    cursor: pointer;
+    box-shadow: 1px 3px 8px -1px rgba(128, 128, 128, 0.45);
+    transition-duration: 200ms;
+}
+
+.res-message {
+    padding-top: 20px;
+    font-size: 20px;
+    color: #2a97f0;
+}
+
+@media (min-width: 576px) {
+    .response-button {
+        width: 35%;
+    }
+}

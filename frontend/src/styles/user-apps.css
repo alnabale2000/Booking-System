@@ -1,0 +1,74 @@
+.appointments {
+    padding: 20px;
+    text-align: start;
+}
+
+.appointment {
+    background-color: #f6fafa;
+    padding: 8px 20px 8px 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    border: 0.8px #2a97f0 solid;
+    box-shadow: 1px 5px 10px -3px rgba(74, 11, 248, 0.315);
+}
+
+.app-top-text {
+    font-size: 22.5px;
+    font-weight: bold;
+    color: black;
+}
+
+.app-date {
+    font-size: 14px;
+    color: gray;
+}
+
+.app-status {
+    font-size: 17px;
+    color: #2a97f0;
+    font-weight: bold;
+}
+
+.delete-icon {
+    color: #2a97f0;
+    transition-duration: 250ms;
+}
+
+.delete-icon:hover {
+    cursor: pointer;
+    background-color: #2a97f0;
+    color: white;
+    transition-duration: 250ms;
+}
+
+@media (min-width: 768px) {
+    .appointments {
+        padding: 20px 60px 20px 60px;
+    }
+}
+
+@media (min-width: 992px) {
+    .appointments {
+        padding: 20px 90px 20px 90px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .appointments {
+        display: flex;
+        padding: 40px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .appointment {
+        width: 44.2%;
+        margin: 10px;
+    }
+}
+
+@media (min-width: 1300px) {
+    .appointment {
+        width: 44.4%;
+    }
+}

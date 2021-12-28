@@ -1,3 +1,8 @@
 .search {
+    margin-top: 80px;
+    text-align: center;
+    border-radius: 25px;
+    height: 42px;
     width: 300px;
+    border: 1px #56b2e5 solid;
 }

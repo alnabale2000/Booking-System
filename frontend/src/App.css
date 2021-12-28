@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 @import "styles/sellers_page/search-bar.css";
+@import "styles/sellers_page/sellers-list.css";
+@import "styles/custom-popup.module.css";
+@import "styles/user-apps.css";
+@import "styles/seller-apps.css";
+@import "styles/login&signup-form.css";
 .App {
     text-align: center;
     font-family: "Nanum Gothic", sans-serif;
@@ -22,6 +27,12 @@ body {
     justify-content: space-between;
 }
 
+/* .flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+} */
+
 .navbar {
     background-color: #56b2e5;
     box-shadow: 1px 1px 3px 1px rgba(128, 128, 128, 0.804);
@@ -29,6 +40,8 @@ body {
 
 .title {
     padding-left: 20px;
+    transition-duration: 300ms;
+    color: white;
 }
 
 .links {
@@ -37,4 +50,17 @@ body {
 
 .link {
     padding: 0 7.5px 0 7.5px;
+    transition-duration: 300ms;
+    color: white;
+}
+
+.link:hover {
+    cursor: pointer;
+    color: black;
+    transition-duration: 300ms;
+}
+.title:hover {
+    cursor: pointer;
+    color: black;
+    transition-duration: 300ms;
 }

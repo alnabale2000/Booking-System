@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { setAppointments, deleteAppointment } from "../reducers/appointments";
+import { AiOutlineClose } from "react-icons/ai";
 
 const UserAppointments = () => {
     const id = useParams();
@@ -32,24 +33,41 @@ const UserAppointments = () => {
 
     return (
         <main>
-            {console.log("appointments", appointments)}
-            <section className="sellers">
+            <section className="appointments">
                 {appointments &&
                     appointments.map((appointment) => (
-                        <div className="seller" key={appointment.id}>
-                            <h2> You Book An Appointment With({appointment.seller_name}).</h2>
-                            <p>
-                                {" "}
+                        <div className="appointment" key={appointment.id}>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                }}
+                                className="top-text-div flex-box space-b baseline"
+                            >
+                                <p className="app-top-text">
+                                    You Book An Appointment With({appointment.seller_name}).
+                                </p>
+                                <AiOutlineClose
+                                    fontSize={"22.5px"}
+                                    className="delete-icon"
+                                    onClick={() => {
+                                        removeAppointment(appointment.id);
+                                    }}
+                                />
+                            </div>
+                            <p className="app-date">
                                 Appointment Date : {appointment.app_date} At {appointment.hour}
                             </p>
-                            <p>{appointment.app_status}</p>
-                            <button
+                            <p className="app-status">
+                                Appointment Status : {appointment.app_status}
+                            </p>
+                            {/* <button
                                 onClick={() => {
                                     removeAppointment(appointment.id);
                                 }}
                             >
                                 delete
-                            </button>
+                            </button> */}
                         </div>
                     ))}
             </section>
