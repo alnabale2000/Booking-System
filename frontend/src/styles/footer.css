@@ -1,0 +1,20 @@
+footer {
+    margin: 0;
+    padding: 0;
+    background-color: #081455;
+    height: 150px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+}
+
+.so-icons {
+    padding-top: 10px;
+}
+
+.so-icon {
+    margin: 10px;
+}
