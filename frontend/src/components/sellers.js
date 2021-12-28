@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import CustomPopup from "./popup";
-
 import { setSellers } from "../reducers/sellers";
 
 const Sellers = () => {
@@ -29,6 +28,7 @@ const Sellers = () => {
     const sellers = state.sellers;
 
     useEffect(() => {
+        //get sellers list with seller name if searched
         axios.get(`http://localhost:5000/sellers/${searchText}`).then((res) => {
             dispatch(setSellers(res.data));
         });
@@ -40,6 +40,7 @@ const Sellers = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        //send appointment to database
         try {
             axios
                 .post(`http://localhost:5000/add_appointment/`, {
@@ -53,23 +54,30 @@ const Sellers = () => {
                     appStatus,
                 })
                 .then((res) => {
-                    console.log("res.data", res.data);
                     // dispatch(addAddress(res.data));
                 });
+
+            //to change between button and message then close the pop-up
             setToggleConfirmButton(false);
-            setMessage("Appointment Confirmed Succssfully");
+            setMessage("Appointment Confirmed Successfully");
             setTimeout(() => {
                 setVisibility(!visibility);
             }, 2500);
+            //
         } catch (error) {
             setMessage("Can not Confirm");
         }
     };
 
     const openPopUb = (sellerId, sellerName) => {
+        //re-setState
         if (toggleConfirmButton === false) setToggleConfirmButton(true);
+
+        // get seller info
         setSellerName(sellerName);
         setSellerId(sellerId);
+
+        //open pop-up
         setVisibility(!visibility);
     };
 
@@ -93,6 +101,7 @@ const Sellers = () => {
                                 <p className="seller-filed"> {seller.filed}</p>
                                 <p className="seller-summary">{seller.summary}</p>
                             </section>
+                            {/*allow booking to logged in user only */}
                             {userId !== null ? (
                                 <button
                                     className="confirm-button"
@@ -121,7 +130,7 @@ const Sellers = () => {
                                                 <input
                                                     className="app-info-input"
                                                     type="text"
-                                                    placeholder="Enter 10 digits phone number"
+                                                    placeholder="10 digits without(0) or +962.."
                                                     onChange={(e) => setPhoneNumber(e.target.value)}
                                                 />
                                             </div>

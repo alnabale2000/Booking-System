@@ -16,7 +16,6 @@ const SellerLogin = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("t50");
 
         axios
             .post("http://localhost:5000/sellerLogin", { email, password })
@@ -84,6 +83,7 @@ const SellerLogin = () => {
                     </button>
                     <div className="divider"></div>
 
+                    {/* Avoiding extra white space*/}
                     <p className={message === "" ? "" : "form-message"}>{message} </p>
                     <p className="footer-login-text">
                         don't have an account?

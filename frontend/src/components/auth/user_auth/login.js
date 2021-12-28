@@ -20,7 +20,6 @@ const Login = () => {
             .post("http://localhost:5000/login", { email, password })
             .then((result) => {
                 const user = jwt_decode(result.data["token"]);
-                console.log("user", user);
 
                 if (result) {
                     dispatch(setToken({ token: result.data["token"], user }));
@@ -51,7 +50,6 @@ const Login = () => {
             })
             .finally((e) => {
                 setTimeout(() => {
-                    console.log("hi");
                     setMessage("");
                 }, 3000);
             });
@@ -87,6 +85,7 @@ const Login = () => {
                     </button>
                     <div className="divider"></div>
 
+                    {/* Avoiding extra white space*/}
                     <p className={message === "" ? "" : "form-message"}>{message} </p>
                     <p className="footer-login-text">
                         don't have an account?

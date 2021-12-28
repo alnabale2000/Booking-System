@@ -17,7 +17,6 @@ const SellerAppointments = () => {
 
     const getAppointments = () => {
         axios.get(`http://localhost:5000/seller_appointments/${id.id}`).then((res) => {
-            console.log("res.data", res.data);
             dispatch(setAppointments(res.data));
         });
     };
@@ -53,6 +52,7 @@ const SellerAppointments = () => {
                             <p className="phone-number">
                                 Phone Number : 0{appointment.phonenumber}
                             </p>
+                            {/* Converting between buttons and message & handle message,buttons color*/}
                             {appointment.app_status === "Waiting For Response..." ? (
                                 <section className="buttons">
                                     <button

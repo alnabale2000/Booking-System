@@ -60,6 +60,7 @@
     width: 80%;
     height: 32px;
     justify-self: start;
+    padding-left: 5px;
     border: 0.8px #56b2e5 solid;
 }
 

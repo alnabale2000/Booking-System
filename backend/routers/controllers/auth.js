@@ -56,7 +56,6 @@ const SellerLogin = async (req, res) => {
         } catch (error) {
             res.status(403).json("The email doesn't exist");
         }
-        console.log("result", result[0]);
         const pass = result[0].pass;
         const id = result[0].id;
         const valid = await bcrypt.compare(password, pass);

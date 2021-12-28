@@ -46,9 +46,7 @@ const getAppointmentsBySellerId = async (req, res) => {
 const deleteAppointment = async (req, res) => {
     // To Resolve cors blocking problem
     // res.setHeader("Access-Control-Allow-Origin", "*");
-    console.log("bt1");
     const id = req.params.id;
-    console.log("id", id);
     const query = `DELETE FROM appointment WHERE id=?;`;
     const data = [id];
     const deleteCheck = await connection.promise().query(query, data);
@@ -57,17 +55,12 @@ const deleteAppointment = async (req, res) => {
 };
 
 const updateAppointmentStatus = (req, res) => {
-    console.log("t1");
     const { appointmentId, status } = req.body;
     const query = `UPDATE appointment SET app_status=? WHERE id=?;`;
     const data = [status, appointmentId];
-    console.log("t2");
 
     connection.query(query, data, (err, result) => {
-        console.log("t3");
-
         if (err) res.status(404).json(err);
-        console.log("t4");
 
         res.status(200).json("Your response will send to the client");
     });

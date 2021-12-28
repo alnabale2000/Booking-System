@@ -18,7 +18,6 @@ const SellerSignUp = () => {
             if (!username || !email || !password || !filed || !summary) {
                 setMessage("Please fill all the info");
             } else {
-                console.log("t1");
                 await axios
                     .post("http://localhost:5000/sellers", {
                         username,
@@ -28,9 +27,6 @@ const SellerSignUp = () => {
                         summary,
                     })
                     .then((response) => {
-                        console.log("response", response);
-                        console.log("t2");
-
                         if (response) {
                             setMessage("The user has been created successfully ");
                             setTimeout(function () {
@@ -119,6 +115,7 @@ const SellerSignUp = () => {
                     </button>
                     <div className="divider"></div>
 
+                    {/* Avoiding extra white space*/}
                     <p className={message === "" ? "" : "form-message"}>{message} </p>
                     <p className="footer-login-text">
                         Already Have An Account?

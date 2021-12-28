@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken, setStatus } from "./../reducers/login";
 import { useEffect } from "react";
-// import jwt from "jsonwebtoken";
 import jwt_decode from "jwt-decode";
 
 const Navigation = () => {
@@ -11,6 +10,8 @@ const Navigation = () => {
     const dispatch = useDispatch();
     let user;
     const storedToken = localStorage.getItem("token");
+
+    //to avoid (token!== string) error
     if (storedToken) {
         user = jwt_decode(storedToken, { header: true });
     }
@@ -19,19 +20,19 @@ const Navigation = () => {
     const type = localStorage.getItem("type");
     const state = useSelector((state) => {
         return {
-            // token: state.loginReducer.token,
             isLoggedIn: state.loginReducer.isLoggedIn,
         };
     });
 
     useEffect(() => {
         const token = localStorage.getItem("token");
+        //check if the user was logged in or not
         setStatus(token ? true : false);
-        console.log("state.isLoggedIn", state.isLoggedIn);
         setToken({ token, user });
     }, []);
 
     const loggedOut = () => {
+        //clear localStorage and update the state
         localStorage.clear();
         dispatch(setToken({ token: "", user }));
         navigate("/");

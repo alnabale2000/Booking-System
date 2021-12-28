@@ -17,16 +17,14 @@ const UserAppointments = () => {
     const appointments = state.appointments;
 
     useEffect(() => {
-        console.log("t");
         axios.get(`http://localhost:5000/user_appointments/${id.id}`).then((res) => {
-            console.log("res.data", res.data);
             dispatch(setAppointments(res.data));
         });
     }, []);
 
+    //delete appointment with spicefic id
     const removeAppointment = (id) => {
         axios.delete(` http://localhost:5000/delete_appointment/${id}`).then((res) => {
-            console.log("front", typeof id);
             dispatch(deleteAppointment(id));
         });
     };
@@ -61,13 +59,6 @@ const UserAppointments = () => {
                             <p className="app-status">
                                 Appointment Status : {appointment.app_status}
                             </p>
-                            {/* <button
-                                onClick={() => {
-                                    removeAppointment(appointment.id);
-                                }}
-                            >
-                                delete
-                            </button> */}
                         </div>
                     ))}
             </section>

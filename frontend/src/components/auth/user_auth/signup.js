@@ -23,8 +23,6 @@ const SignUp = () => {
                         password,
                     })
                     .then((response) => {
-                        console.log("response", response);
-
                         if (response) {
                             setMessage("The user has been created successfully ");
                             setTimeout(function () {
@@ -92,6 +90,7 @@ const SignUp = () => {
                     </button>
                     <div className="divider"></div>
 
+                    {/* Avoiding extra white space*/}
                     <p className={message === "" ? "" : "form-message"}>{message} </p>
                     <p className="footer-login-text">
                         Already Have An Account?
